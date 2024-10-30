@@ -12,6 +12,7 @@ import Container from './components/Container'
 import ExecutFunction from './components/ExecutFunction'
 import Message from './components/Message'
 import ChangeMessageState from './components/ChangeMessageState'
+import UserDetails from './components/UserDetails'
 
 function App() {
   const [userName] = useState("Maria");
@@ -21,6 +22,13 @@ function App() {
     {id:2, brand: "Toyota", color: "Verde", newCar: false, km: 300.000},
     {id:3, brand: "ByD", color: "Branco", newCar: true, km: 0}
   ];
+
+  const people = [
+    {id: 1, name: "Gustavo", age: 21, profession: "Estudante"},
+    {id: 2, name: "Erick", age: 23, profession: "Estagiario"},
+    {id: 3, name: "Logan", age: 25, profession: "Engenheiro de software"},
+    {id: 3, name: "Paulo", age: 16, profession: "Estudante"},
+  ]
 
   function showMessage(){
     console.log("Evento do componente pai!");
@@ -76,6 +84,16 @@ function App() {
       <Message msg={message}/>
       {/** state lift */}
       <ChangeMessageState handleMessage={handleMessage} />
+      {people.map((person) =>(
+        <UserDetails
+          key={person.id}
+          name={person.name}
+          age={person.age}
+          profession={person.profession}
+         
+        />
+      ))}
+       
     </div>
   )
 }
